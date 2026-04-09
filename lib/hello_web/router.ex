@@ -20,6 +20,12 @@ defmodule HelloWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/", HelloWeb do
+    pipe_through :api
+
+    get "/health", HealthController, :show
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
   #   pipe_through :api
